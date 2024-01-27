@@ -8,7 +8,7 @@ datePickerButton.addEventListener('click', () => {
 })
 
 function setDate(date) {
-    datePickerButton.innerText = format(date, 'MMMM')
+    datePickerButton.innerText = format(date, 'MMMM do, yyyy')
 }
 
 setDate(new Date())
