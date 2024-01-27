@@ -4,3 +4,7 @@ const datePicker = document.querySelector('.date-picker')
 datePickerButton.addEventListener('click', () => {
     datePicker.classList.toggle('show')
 })
+
+function setDate(date) {
+    datePickerButton.innerText = 
+}
