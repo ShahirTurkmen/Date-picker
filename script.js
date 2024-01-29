@@ -24,6 +24,7 @@ function setupDatePicker(selectedDate) {
     setupDates(selectedDate)
 }
 function setupDates(_selectedDate) {
+
 }
 
 nextMonthButton.addEventListener('click', () => {
