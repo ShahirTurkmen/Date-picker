@@ -94,17 +94,7 @@ button {
   border: 1px solid white;
 }
 
-.date-picker,
-.date-picker-grid,
-.date-picker-header,
-.date-picker-button,
-.date-picker-other-month-date,
-.date-picker-container,
-.date-picker-grid,
-.date-picker-grid-dates,
-.date-picker-grid-header,
-.date-picker-grid-header,
-.date-picker-header {
+.date-picker {
   background-color: #0e0000;
   color: #ffffff;
 }

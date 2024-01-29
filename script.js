@@ -1,17 +1,30 @@
-import { startOfMonth, addMonths, format, fromUnixTime, getUnixTime, startOfWeek, subMonths, endOfMonth, endOfWeek, eachDayOfInterval } from 'date-fns'
+import {
+  format,
+  getUnixTime,
+  fromUnixTime,
+  addMonths,
+  subMonths,
+  startOfWeek,
+  startOfMonth,
+  endOfWeek,
+  endOfMonth,
+  eachDayOfInterval,
+  isSameMonth,
+  isSameDay
+} from "date-fns"
 
-const datePickerButton = document.querySelector('.date-picker-button')
-const datePicker = document.querySelector('.date-picker')
-const datePickerHeaderText = document.querySelector('.current-month')
-const prevMonthButton = document.querySelector('.prev-month-button')
-const nextMonthButton = document.querySelector('.next-month-button')
-const datePickerGridDates = document.querySelector('.date-picker-grid-dates')
+const datePickerButton = document.querySelector(".date-picker-button")
+const datePicker = document.querySelector(".date-picker")
+const datePickerHeaderText = document.querySelector(".current-month")
+const previousMonthButton = document.querySelector(".prev-month-button")
+const nextMonthButton = document.querySelector(".next-month-button")
+const dateGrid = document.querySelector(".date-picker-grid-dates")
 let currentDate = new Date()
 
-datePickerButton.addEventListener('click', () => {
-    datePicker.classList.toggle('show')
-    const selectedDate = fromUnixTime(datePickerButton.dataset.selectedDate)
-    currentDate = selectedDate
+datePickerButton.addEventListener("click", () => {
+  datePicker.classList.toggle("show")
+  const selectedDate = fromUnixTime(datePickerButton.dataset.selectedDate)
+  currentDate = selectedDate
   setupDatePicker(selectedDate)
 })
 
@@ -21,31 +34,44 @@ function setDate(date) {
 }
 
 function setupDatePicker(selectedDate) {
-    datePickerHeaderText.innerText = format(currentDate, 'MMMM - yyyy')
-    setupDates(selectedDate)
+  datePickerHeaderText.innerText = format(currentDate, "MMMM - yyyy")
+  setupDates(selectedDate)
 }
 function setupDates(selectedDate) {
-    const fistWeekStart = startOfWeek(startOfMonth(selectedDate))
-    const lastWeekEnd = endOfWeek(endOfMonth(selectedDate))
-    const dates = eachDayOfInterval({ start: fistWeekStart, end: lastWeekEnd }, {})
-    datePickerGridDates.innerHTML = ''
-    dates.forEach(date => {
-        const dateElement = document.createElement('button')
-        dateElement.classList.add('date')
-        dateElement.innerText = date.getDate()
-        datePickerGridDates.appendChild(dateElement)
+  const firstWeekStart = startOfWeek(startOfMonth(currentDate))
+  const lastWeekEnd = endOfWeek(endOfMonth(currentDate))
+  const dates = eachDayOfInterval({ start: firstWeekStart, end: lastWeekEnd })
+  dateGrid.innerHTML = ""
+  dates.forEach(date => {
+    const dateElement = document.createElement("button")
+    dateElement.classList.add("date")
+    dateElement.innerText = date.getDate()
+    if (!isSameMonth(date, currentDate)) {
+      dateElement.classList.add("date-picker-other-month-date")
+    }
+    if (isSameDay(date, selectedDate)) {
+      dateElement.classList.add("selected")
+    }
+    console.log(selectedDate)
+    dateElement.addEventListener("click", () => {
+      setDate(date)
+      datePicker.classList.remove("show")
     })
-    console.log('here')
+
+    dateGrid.appendChild(dateElement)
+  })
 }
 
-nextMonthButton.addEventListener('click', () => {
-    currentDate = addMonths(currentDate, 1)
-    setupDatePicker()
+nextMonthButton.addEventListener("click", () => {
+  const selectedDate = fromUnixTime(datePickerButton.dataset.selectedDate)
+  currentDate = addMonths(currentDate, 1)
+  setupDatePicker(selectedDate)
 })
 
-prevMonthButton.addEventListener('click', () => {
-    currentDate = subMonths(currentDate, 1)
-    setupDatePicker()
+previousMonthButton.addEventListener("click", () => {
+  const selectedDate = fromUnixTime(datePickerButton.dataset.selectedDate)
+  currentDate = subMonths(currentDate, 1)
+  setupDatePicker(selectedDate)
 })
 
 
