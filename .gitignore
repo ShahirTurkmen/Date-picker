@@ -1,0 +1,7 @@
+node_modules
+dist
+.cache
+pnpm-lock.yaml
+PATH
+.gitignore
+favicon.ico
