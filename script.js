@@ -19,12 +19,11 @@ function setDate(date) {
     datePickerButton.dataset.selectedDate = getUnixTime(date)
 }
 
-function setupDatePicker (selectedDate){
+function setupDatePicker(selectedDate) {
     datePickerHeaderText.innerText = format(currentDate, 'MMMM - yyyy')
     setupDates(selectedDate)
 }
-function setupDates(selectedDate) {
-    
+function setupDates(_selectedDate) {
 }
 
 nextMonthButton.addEventListener('click', () => {
@@ -39,3 +38,5 @@ prevMonthButton.addEventListener('click', () => {
 
 
 setDate(new Date())
+
+console.log(__dirname.small())
