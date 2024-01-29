@@ -12,12 +12,12 @@ datePickerButton.addEventListener('click', () => {
     datePicker.classList.toggle('show')
     const selectedDate = fromUnixTime(datePickerButton.dataset.selectedDate)
     currentDate = selectedDate
-    setupDatePicker()
+  setupDatePicker(selectedDate)
 })
 
 function setDate(date) {
-    datePickerButton.innerText = format(date, 'MMMM do, yyyy')
-    datePickerButton.dataset.selectedDate = getUnixTime(date)
+  datePickerButton.innerText = format(date, "MMMM do, yyyy")
+  datePickerButton.dataset.selectedDate = getUnixTime(date)
 }
 
 function setupDatePicker(selectedDate) {
