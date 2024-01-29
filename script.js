@@ -31,7 +31,7 @@ nextMonthButton.addEventListener('click', () => {
     currentDate = addMonths(currentDate, 1)
     setupDatePicker()
 })
-
+ 
 prevMonthButton.addEventListener('click', () => {
     currentDate = subMonths(currentDate, 1)
     setupDatePicker()
