@@ -3,6 +3,7 @@ body {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
+  background-color: #000000;
 }
 
 .date-picker-container {
@@ -42,7 +43,7 @@ body {
   grid-auto-rows: 2rem;
 }
 
-.date-picker-grid > * {
+.date-picker-grid>* {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,14 +65,14 @@ body {
   color: #AAA;
 }
 
-.date-picker-grid-dates > .date {
+.date-picker-grid-dates>.date {
   cursor: pointer;
   border-radius: .25rem;
   border: none;
   background: none;
 }
 
-.date-picker-grid-dates > *:hover {
+.date-picker-grid-dates>*:hover {
   background-color: hsl(200, 100%, 80%);
   color: black;
 }
@@ -85,4 +86,25 @@ body {
 .month-button:hover {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   border-radius: .5rem;
+}
+
+button {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid white;
+}
+
+.date-picker,
+.date-picker-grid,
+.date-picker-header,
+.date-picker-button,
+.date-picker-other-month-date,
+.date-picker-container,
+.date-picker-grid,
+.date-picker-grid-dates,
+.date-picker-grid-header,
+.date-picker-grid-header,
+.date-picker-header {
+  background-color: #0e0000;
+  color: #ffffff;
 }
